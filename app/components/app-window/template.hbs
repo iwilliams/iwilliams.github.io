@@ -1,0 +1,16 @@
+<div 
+    class="app-window absolute border-2 border-gray-400 border-outset bg-red-100 
+        {{if (eq this.windowManager.currentlyDragging this) "z-10"}}"
+    {{did-insert this.didInsert}}
+    {{will-destroy this.willDestroy}}
+>
+    <div 
+        class="app-window__title p-2 {{if this.isDragging "cursor-grabbing" "cursor-grab"}}"
+        {{on "mousedown" this.mouseDown}}
+    >
+        {{@title}}
+    </div>
+    <div class="app-window__body {{if this.resizable "overflow-scroll resize min-w-fit"}}">
+        {{yield}}
+    </div>
+</div>

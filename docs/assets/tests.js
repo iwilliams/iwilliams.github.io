@@ -45,6 +45,88 @@ define("iwilliams/tests/helpers/index", ["exports", "ember-qunit"], function (_e
     // Additional setup for unit tests can be done here.
   }
 });
+define("iwilliams/tests/integration/components/app-window-test", ["@ember/template-factory", "qunit", "iwilliams/tests/helpers", "@ember/test-helpers"], function (_templateFactory, _qunit, _helpers, _testHelpers) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"iwilliams/tests/helpers",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | app-window', function (hooks) {
+    (0, _helpers.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <AppWindow />
+      */
+      {
+        "id": "gnFbWOqU",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"app-window\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }));
+      assert.dom(this.element).hasText('');
+
+      // Template block usage:
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <AppWindow>
+              template block text
+            </AppWindow>
+          
+      */
+      {
+        "id": "jEyjZ9Uv",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n        template block text\\n      \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"app-window\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }));
+      assert.dom(this.element).hasText('template block text');
+    });
+  });
+});
+define("iwilliams/tests/integration/components/app-window/component-test", ["@ember/template-factory", "qunit", "iwilliams/tests/helpers", "@ember/test-helpers"], function (_templateFactory, _qunit, _helpers, _testHelpers) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"iwilliams/tests/helpers",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | app-window', function (hooks) {
+    (0, _helpers.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <AppWindow />
+      */
+      {
+        "id": "gnFbWOqU",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"app-window\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }));
+      assert.dom(this.element).hasText('');
+
+      // Template block usage:
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <AppWindow>
+              template block text
+            </AppWindow>
+          
+      */
+      {
+        "id": "jEyjZ9Uv",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n        template block text\\n      \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"app-window\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }));
+      assert.dom(this.element).hasText('template block text');
+    });
+  });
+});
 define("iwilliams/tests/test-helper", ["iwilliams/app", "iwilliams/config/environment", "qunit", "@ember/test-helpers", "qunit-dom", "ember-qunit"], function (_app, _environment, QUnit, _testHelpers, _qunitDom, _emberQunit) {
   "use strict";
 
@@ -52,6 +134,20 @@ define("iwilliams/tests/test-helper", ["iwilliams/app", "iwilliams/config/enviro
   (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
   (0, _qunitDom.setup)(QUnit.assert);
   (0, _emberQunit.start)();
+});
+define("iwilliams/tests/unit/services/window-manager-test", ["qunit", "iwilliams/tests/helpers"], function (_qunit, _helpers) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"iwilliams/tests/helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Unit | Service | window-manager', function (hooks) {
+    (0, _helpers.setupTest)(hooks);
+
+    // TODO: Replace this with your real tests.
+    (0, _qunit.test)('it exists', function (assert) {
+      let service = this.owner.lookup('service:window-manager');
+      assert.ok(service);
+    });
+  });
 });
 define('iwilliams/config/environment', [], function() {
   var prefix = 'iwilliams';

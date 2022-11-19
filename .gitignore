@@ -9,6 +9,7 @@
 /node_modules/
 
 # misc
+/.yarn
 /.env*
 /.pnp*
 /.sass-cache

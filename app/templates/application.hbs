@@ -1,5 +1,16 @@
-{{page-title "Iwilliams"}}
+{{page-title "iwilliams"}}
 
-<h2 id="title">Welcome to Ember</h2>
+<AppWindow 
+    @title="About Me"
+>
+    <p>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
+</AppWindow>
+
+<AppWindow 
+    @title="Wirez"
+    @resizable={{false}}
+>
+    <iframe frameborder="0" src="https://itch.io/embed-upload/2270446?color=2e222f" allowfullscreen="" width="800" height="480"><a href="https://iwilliams.itch.io/wirez">Play Wirez on itch.io</a></iframe>
+</AppWindow>
 
 {{outlet}}
