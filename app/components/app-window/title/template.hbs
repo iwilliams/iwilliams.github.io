@@ -1,0 +1,12 @@
+<div 
+    class="app-window__title p-2 text-lg {{if this.isDragging "cursor-grabbing" "cursor-grab"}}"
+    ...attributes
+>
+    <div class="flex">
+        <span>{{yield}}</span>
+        <span class="flex-auto"></span>
+        {{#if @onClose}}
+            <button {{on "click" (optional @onClose)}}>X</button>
+        {{/if}}
+    </div>
+</div>

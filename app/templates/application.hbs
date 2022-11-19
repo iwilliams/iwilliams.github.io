@@ -1,16 +1,43 @@
 {{page-title "iwilliams"}}
 
-<AppWindow 
-    @title="About Me"
->
-    <p>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
-</AppWindow>
+<Desktop>
+    <AppWindow 
+        @title="About Me"
+        @offsetX={{100}}
+        @offsetY={{100}}
+    >
+        <div class="p-2 text-white">
+            {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+                <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
+                <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks.</p>
+                <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
+                    You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>
+                    and <ExternalLink @href="https://store.steampowered.com/search/?developer=iwilliams">on Steam</ExternalLink>.
+                </p>
+            {{/let}}
+        </div>
+    </AppWindow>
 
-<AppWindow 
-    @title="Wirez"
-    @resizable={{false}}
->
-    <iframe frameborder="0" src="https://itch.io/embed-upload/2270446?color=2e222f" allowfullscreen="" width="800" height="480"><a href="https://iwilliams.itch.io/wirez">Play Wirez on itch.io</a></iframe>
-</AppWindow>
+    {{#if this.wirezOpen}}
+        <AppWindow 
+            @title="Wirez"
+            @resizable={{false}}
+            @onClose={{fn (mut this.wirezOpen) false}}
+        >
+            <iframe frameborder="0" src="https://itch.io/embed-upload/2270446?color=2e222f" allowfullscreen="" width="800" height="480"><a href="https://iwilliams.itch.io/wirez">Play Wirez on itch.io</a></iframe>
+        </AppWindow>
+    {{/if}}
 
-{{outlet}}
+    {{#if this.relevelerOpen}}
+        <AppWindow 
+            @title="RELEVƎ⅃ƎЯ"
+            @resizable={{false}}
+            @onClose={{fn (mut this.relevelerOpen) false}}
+        >
+            <iframe frameborder="0" src="https://itch.io/embed-upload/2143016?color=000000" allowfullscreen="" width="640" height="480"><a href="https://iwilliams.itch.io/releveler">Play ​RELEVƎ⅃ƎЯ on itch.io</a></iframe>
+        </AppWindow>
+    {{/if}}
+
+
+    {{outlet}}
+</Desktop>

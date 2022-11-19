@@ -46,6 +46,9 @@ export default class AppWindowComponent extends Component {
     mouseMove(e) {
         if (this.isDragging) {
             e.preventDefault();
+            if (e.clientY < 0) {
+                return
+            }
             // calculate the new cursor position:
             const pos1 = this.currentMousePosX - e.clientX;
             const pos2 = this.currentMousePosY - e.clientY;
@@ -54,7 +57,6 @@ export default class AppWindowComponent extends Component {
             // set the element's new position:
             this.dragElement.style.top = (this.dragElement.offsetTop - pos2) + "px";
             this.dragElement.style.left = (this.dragElement.offsetLeft - pos1) + "px";
-            console.log("weee");
         }
     }
 
@@ -63,6 +65,12 @@ export default class AppWindowComponent extends Component {
         this.dragElement = e;
         document.addEventListener("mousemove", this.mouseMove);
         document.addEventListener("mouseup", this.mouseUp);
+        if (this.args.offsetX) {
+            this.dragElement.style.left = `${this.args.offsetX}px`;
+        }
+        if (this.args.offsetY) {
+            this.dragElement.style.top = `${this.args.offsetY}px`;
+        }
     }
 
     @action
