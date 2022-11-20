@@ -6,4 +6,5 @@ export default class ApplicationController extends Controller {
     @tracked relevelerOpen = false;
     @tracked aboutOpen = true;
     @tracked deathOpen = false;
+    @tracked systemOpen = false;
 }

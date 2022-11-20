@@ -1,5 +1,9 @@
-<div class="desktop bg-marble-green bg-slate-500 w-full h-full flex flex-col items-start content-start p-5">
-    {{yield (hash
-        Icon=(component "desktop/icon")
-    )}}
+<div class="flex flex-col w-full h-full">
+    <div class="desktop bg-marble-green bg-slate-500 font-mono flex flex-col flex-grow content-start items-center overflow-auto flex-wrap p-4">
+        {{yield (hash
+            Icon=(component "desktop/icon")
+        )}}
+    </div>
+
+    <TaskBar />
 </div>

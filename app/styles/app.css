@@ -12,3 +12,9 @@ html, body {
     height: 100%;
     overflow: hidden;
 }
+
+
+ul li:before {
+    content: " \27A3";
+    margin-right: 0.5em;
+}

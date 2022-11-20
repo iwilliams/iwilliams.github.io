@@ -43,5 +43,13 @@ module.exports = function (environment) {
     // here you can enable a production-specific feature
   }
 
+  if (process.env.SOURCE_VERSION) {
+    const pkg = require('../package.json');
+    const hash = process.env.SOURCE_VERSION.substr(0, 7);
+    ENV['ember-cli-app-version'] = {
+      version: `${pkg.version}+${hash}`
+    };
+  }
+
   return ENV;
 };

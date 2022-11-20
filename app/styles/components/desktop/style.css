@@ -9,3 +9,7 @@
 .desktop__icon {
     max-width: 75px;
 }
+
+.desktop__icon-text {
+    min-height: 3rem;
+}

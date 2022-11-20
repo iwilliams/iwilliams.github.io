@@ -6,11 +6,12 @@
 >
     <AppWindow::Title
         @onClose={{@onClose}}
+        @isDragging={{this.isDragging}}
         {{on "mousedown" this.mouseDown}}
     >
         {{@title}}
     </AppWindow::Title>
-    <div class="app-window__body relative {{if this.resizable "overflow-auto resize min-w-fit"}}">
+    <div class="app-window__body relative {{if this.resizable "overflow-auto overflow-y-scroll resize min-w-fit"}}">
         {{yield}}
         {{#if this.isDragging}}
             <div class="absolute w-full h-full z-10 top-0"></div>

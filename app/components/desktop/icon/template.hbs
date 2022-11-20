@@ -1,1 +1,9 @@
-{{yield}}
+<button 
+    class="desktop__icon m-4 flex flex-col justify-center items-center text-shadow shadow-black" 
+    type="button"
+    title={{@name}}
+    ...attributes
+>
+    <span class="text-6xl mb-2">{{@icon}}</span>
+    <span class="desktop__icon-text text-l text-white text-vertical-ellipsis">{{@name}}</span>
+</button>

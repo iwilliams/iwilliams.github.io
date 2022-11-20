@@ -1,57 +1,13 @@
-{{page-title "iwilliams"}}
+{{page-title "iwilliams 👁️"}}
 
 <Desktop as |D|>
 
-    <D.Icon>
-        <button 
-            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
-            {{on "click" (fn (mut this.aboutOpen) true)}}
-        >
-            <span class="text-6xl mb-2">🗣️</span>
-            <span class="text-l text-white">About Me</span>
-        </button>
-    </D.Icon>
-
-    <D.Icon>
-        <button 
-            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
-            {{on "click" (fn (mut this.wirezOpen) true)}}
-        >
-            <span class="text-6xl mb-2">🔌</span>
-            <span class="text-l text-white">Wirez</span>
-        </button>
-    </D.Icon>
-
-    <D.Icon>
-        <button 
-            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
-            {{on "click" (fn (mut this.relevelerOpen) true)}}
-        >
-            <span class="text-6xl mb-2">🪞</span>
-            <span class="text-l text-white">RELEVƎ⅃ƎЯ</span>
-        </button>
-    </D.Icon>
-
-    <D.Icon>
-        <button 
-            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
-            {{on "click" (fn (mut this.deathOpen) true)}}
-        >
-            <span class="text-6xl mb-2">💀</span>
-            <span class="text-l text-white">Planks of Death</span>
-        </button>
-    </D.Icon>
-
-    <D.Icon>
-        <button 
-            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
-            {{on "click" (fn (mut this.shipOpen) true)}}
-        >
-            <span class="text-6xl mb-2">🚢</span>
-            <span class="text-l text-white">We Must Go Down With The Ship</span>
-        </button>
-    </D.Icon>
-
+    <D.Icon @icon="🗣️" @name="About Me" {{on "click" (fn (mut this.aboutOpen) true)}} />
+    <D.Icon @icon="🖥️" @name="System Information" {{on "click" (fn (mut this.systemOpen) true)}} />
+    <D.Icon @icon="🔌" @name="Wirez" {{on "click" (fn (mut this.wirezOpen) true)}} />
+    <D.Icon @icon="🪞" @name="RELEVƎ⅃ƎЯ" {{on "click" (fn (mut this.relevelerOpen) true)}} />
+    <D.Icon @icon="💀" @name="Planks of Death" {{on "click" (fn (mut this.deathOpen) true)}}/>
+    <D.Icon @icon="🚢" @name="We Must Go Down With The Ship" {{on "click" (fn (mut this.shipOpen) true)}}/>
 
 
     {{#if this.aboutOpen}}
@@ -59,18 +15,42 @@
             @title="🗣️ About Me"
             @offsetX={{-40}}
             @offsetY={{40}}
-            @initialHeight={{320}}
+            @initialHeight={{430}}
             @onClose={{fn (mut this.aboutOpen) false}}
         >
-            <div class="p-2 text-white">
+            <div class="p-2 text-white font-mono">
                 {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
                     <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
-                    <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks.</p>
+                    <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks and languages.</p>
                     <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
                         You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>
                         and <ExternalLink @href="https://store.steampowered.com/search/?developer=iwilliams">on Steam</ExternalLink>.
                         A few of my games that work in the browser can even be played here on this virtual dekstop 💻.
                     </p>
+                    <p class={{pStyle}}>You can find me on various other websites below:</p>
+                    <ul class="{{pStyle}} pl-2">
+                        <li><ExternalLink @href="https://twitter.com/iwilliams_dev">Twitter 🐦</ExternalLink></li>
+                        <li><ExternalLink @href="https://github.com/iwilliams">GitHub 🐙</ExternalLink></li>
+                        <li><ExternalLink @href="https://cohost.org/iwilliams">Cohost 🥚</ExternalLink></li>
+                        <li><ExternalLink @href="https://iwilliams.itch.io">Itch.io 🕹️</ExternalLink></li>
+                    </ul>
+                    <img class="float-right" src="/skeleton_toot.gif" alt="A skeleton blows on a trumpet"/>
+                {{/let}}
+            </div>
+        </AppWindow>
+    {{/if}}
+
+    {{#if this.systemOpen}}
+        <AppWindow 
+            @title="🖥️ System Information"
+            @onClose={{fn (mut this.systemOpen) false}}
+        >
+            <div class="p-2 text-white font-mono">
+                {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+                    <p class="{{pStyle}} font-bold">***CURRENTLY UNDER CONSTRUCTION***</p>
+                    <p class={{pStyle}}>This web applicaiton is made using <ExternalLink @href="https://emberjs.com">Ember.js 🐹</ExternalLink>. It's hosted using GitHub pages, and you can find the source code <ExternalLink @href="https://github.com/iwilliams/iwilliams.github.io">over here</ExternalLink>.</p>
+                    <p class={{pStyle}}>I might work on making this into something that can be more easily extended and customized. If you end up using the code for something cool let me know!</p>
+                    <p class={{pStyle}}>App version: {{app-version shaOnly=true}}</p>
                 {{/let}}
             </div>
         </AppWindow>
