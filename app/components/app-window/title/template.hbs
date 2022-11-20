@@ -1,12 +1,10 @@
 <div 
-    class="app-window__title p-2 text-lg {{if this.isDragging "cursor-grabbing" "cursor-grab"}}"
+    class="app-window__title p-2 text-lg border-b-2 border-gray-400 {{if this.isDragging "cursor-grabbing" "cursor-grab"}}"
     ...attributes
 >
-    <div class="flex">
+    <div class="flex shadow-black text-shadow">
         <span>{{yield}}</span>
         <span class="flex-auto"></span>
-        {{#if @onClose}}
-            <button {{on "click" (optional @onClose)}}>X</button>
-        {{/if}}
+        <button class="shadow-black text-shadow" {{on "click" (optional @onClose)}}>❌</button>
     </div>
 </div>

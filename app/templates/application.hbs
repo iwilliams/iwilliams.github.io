@@ -1,26 +1,84 @@
 {{page-title "iwilliams"}}
 
-<Desktop>
-    <AppWindow 
-        @title="About Me"
-        @offsetX={{100}}
-        @offsetY={{100}}
-    >
-        <div class="p-2 text-white">
-            {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
-                <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
-                <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks.</p>
-                <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
-                    You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>
-                    and <ExternalLink @href="https://store.steampowered.com/search/?developer=iwilliams">on Steam</ExternalLink>.
-                </p>
-            {{/let}}
-        </div>
-    </AppWindow>
+<Desktop as |D|>
+
+    <D.Icon>
+        <button 
+            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
+            {{on "click" (fn (mut this.aboutOpen) true)}}
+        >
+            <span class="text-6xl mb-2">🗣️</span>
+            <span class="text-l text-white">About Me</span>
+        </button>
+    </D.Icon>
+
+    <D.Icon>
+        <button 
+            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
+            {{on "click" (fn (mut this.wirezOpen) true)}}
+        >
+            <span class="text-6xl mb-2">🔌</span>
+            <span class="text-l text-white">Wirez</span>
+        </button>
+    </D.Icon>
+
+    <D.Icon>
+        <button 
+            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
+            {{on "click" (fn (mut this.relevelerOpen) true)}}
+        >
+            <span class="text-6xl mb-2">🪞</span>
+            <span class="text-l text-white">RELEVƎ⅃ƎЯ</span>
+        </button>
+    </D.Icon>
+
+    <D.Icon>
+        <button 
+            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
+            {{on "click" (fn (mut this.deathOpen) true)}}
+        >
+            <span class="text-6xl mb-2">💀</span>
+            <span class="text-l text-white">Planks of Death</span>
+        </button>
+    </D.Icon>
+
+    <D.Icon>
+        <button 
+            class="desktop__icon flex flex-col justify-center items-center text-shadow shadow-black mb-8"
+            {{on "click" (fn (mut this.shipOpen) true)}}
+        >
+            <span class="text-6xl mb-2">🚢</span>
+            <span class="text-l text-white">We Must Go Down With The Ship</span>
+        </button>
+    </D.Icon>
+
+
+
+    {{#if this.aboutOpen}}
+        <AppWindow 
+            @title="🗣️ About Me"
+            @offsetX={{-40}}
+            @offsetY={{40}}
+            @initialHeight={{320}}
+            @onClose={{fn (mut this.aboutOpen) false}}
+        >
+            <div class="p-2 text-white">
+                {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+                    <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
+                    <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks.</p>
+                    <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
+                        You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>
+                        and <ExternalLink @href="https://store.steampowered.com/search/?developer=iwilliams">on Steam</ExternalLink>.
+                        A few of my games that work in the browser can even be played here on this virtual dekstop 💻.
+                    </p>
+                {{/let}}
+            </div>
+        </AppWindow>
+    {{/if}}
 
     {{#if this.wirezOpen}}
         <AppWindow 
-            @title="Wirez"
+            @title="🔌 Wirez"
             @resizable={{false}}
             @onClose={{fn (mut this.wirezOpen) false}}
         >
@@ -30,7 +88,7 @@
 
     {{#if this.relevelerOpen}}
         <AppWindow 
-            @title="RELEVƎ⅃ƎЯ"
+            @title="🪞 RELEVƎ⅃ƎЯ"
             @resizable={{false}}
             @onClose={{fn (mut this.relevelerOpen) false}}
         >
@@ -38,6 +96,25 @@
         </AppWindow>
     {{/if}}
 
+    {{#if this.shipOpen}}
+        <AppWindow 
+            @title="🚢 We Must Go Down With The Ship"
+            @resizable={{false}}
+            @onClose={{fn (mut this.shipOpen) false}}
+        >
+            <iframe frameborder="0" src="https://itch.io/embed-upload/5538635?color=140c1c" allowfullscreen="" width="1280" height="800"><a href="https://iwilliams.itch.io/we-must-go-down-with-the-ship">Play We Must Go Down With The Ship on itch.io</a></iframe>
+        </AppWindow>
+    {{/if}}
+
+    {{#if this.deathOpen}}
+        <AppWindow 
+            @title="💀 Planks of Death"
+            @resizable={{false}}
+            @onClose={{fn (mut this.deathOpen) false}}
+        >
+            <iframe frameborder="0" src="https://itch.io/embed-upload/1810938?color=202020" allowfullscreen="" width="320" height="480"><a href="https://iwilliams.itch.io/planks-of-death">Play Planks of Death on itch.io</a></iframe>
+        </AppWindow>
+    {{/if}}
 
     {{outlet}}
 </Desktop>

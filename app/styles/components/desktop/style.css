@@ -1,3 +1,11 @@
-.desktop {
+.desktop.bg-marble-green {
     background-image: url("/marble_green_1.png");
+}
+
+.desktop.bg-clouds {
+    background-image: url("/clouds.png");
+}
+
+.desktop__icon {
+    max-width: 75px;
 }

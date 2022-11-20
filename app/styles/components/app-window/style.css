@@ -1,6 +1,7 @@
 @import "title/style.css";
 
 .app-window {
-    background-color: rgb(0 0 0 / 52%);
+    /* background-color: rgb(0 0 0 / 52%); */
+    background-color: black;
 }
 

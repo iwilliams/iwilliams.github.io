@@ -1,3 +1,5 @@
-<div class="desktop bg-slate-500 w-full h-full">
-    {{yield}}
+<div class="desktop bg-marble-green bg-slate-500 w-full h-full flex flex-col items-start content-start p-5">
+    {{yield (hash
+        Icon=(component "desktop/icon")
+    )}}
 </div>
