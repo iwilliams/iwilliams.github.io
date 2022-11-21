@@ -1,6 +1,6 @@
 <div 
-    class="app-window fixed border-2 border-gray-400 border-outset shadow-2xl
-        {{if this.currentlyActive "z-10" "opacity-75"}}"
+    class="app-window absolute md:fixed border-2 border-gray-400 border-outset shadow-2xl max-w-full flex sm:block flex-col h-full sm:h-[auto]
+        {{if this.currentlyActive "z-10"}}"
     {{did-insert this.didInsert}}
     {{will-destroy this.willDestroy}}
 >
@@ -11,7 +11,7 @@
     >
         {{@title}}
     </AppWindow::Title>
-    <div class="app-window__body relative {{if this.resizable "overflow-auto overflow-y-scroll resize min-w-fit"}}">
+    <div class="app-window__body relative flex-auto {{if this.resizable "overflow-auto overflow-y-scroll sm:resize min-w-fit"}}">
         {{yield}}
         {{#if (or (not this.currentlyActive) this.isDragging)}}
             <div class="absolute w-full h-full z-10 top-0" {{on "click" this.makeActive}}></div>

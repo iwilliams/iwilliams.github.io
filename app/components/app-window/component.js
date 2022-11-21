@@ -74,6 +74,9 @@ export default class AppWindowComponent extends Component {
         document.addEventListener("mousemove", this.mouseMove);
         document.addEventListener("mouseup", this.mouseUp);
 
+        this.windowManager.currentlyDragging = this;
+
+
         if (this.args.initialHeight) {
             this.dragElement.querySelector('.app-window__body').style.height = `${this.args.initialHeight}px`;
         }
@@ -82,6 +85,12 @@ export default class AppWindowComponent extends Component {
         const height = this.dragElement.offsetHeight;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
+
+        if (windowWidth <= 640) {
+            this.dragElement.style.top = "0";
+            this.dragElement.style.left = "0";
+            return;
+        }
 
         if (this.args.offsetX) {
             let offsetX = this.args.offsetX;
@@ -103,7 +112,6 @@ export default class AppWindowComponent extends Component {
             this.dragElement.style.top = `${(windowHeight - height)*.5}px`;
         }
 
-        this.windowManager.currentlyDragging = this;
     }
 
     @action
