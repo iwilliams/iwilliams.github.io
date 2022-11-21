@@ -1,6 +1,6 @@
 <div 
-    class="app-window fixed border-2 border-gray-400 border-outset shadow-xl
-        {{if (eq this.windowManager.currentlyDragging this) "z-10"}}"
+    class="app-window fixed border-2 border-gray-400 border-outset shadow-2xl
+        {{if this.currentlyActive "z-10" "opacity-75"}}"
     {{did-insert this.didInsert}}
     {{will-destroy this.willDestroy}}
 >
@@ -13,8 +13,8 @@
     </AppWindow::Title>
     <div class="app-window__body relative {{if this.resizable "overflow-auto overflow-y-scroll resize min-w-fit"}}">
         {{yield}}
-        {{#if this.isDragging}}
-            <div class="absolute w-full h-full z-10 top-0"></div>
+        {{#if (or (not this.currentlyActive) this.isDragging)}}
+            <div class="absolute w-full h-full z-10 top-0" {{on "click" this.makeActive}}></div>
         {{/if}}
     </div>
 </div>

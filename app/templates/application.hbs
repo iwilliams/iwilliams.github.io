@@ -1,14 +1,14 @@
-{{page-title "iwilliams 👁️"}}
+{{page-title "iwilliams"}}
 
 <Desktop as |D|>
 
     <D.Icon @icon="🗣️" @name="About Me" {{on "click" (fn (mut this.aboutOpen) true)}} />
     <D.Icon @icon="🖥️" @name="System Information" {{on "click" (fn (mut this.systemOpen) true)}} />
+    <D.Icon @icon="🌐" @name="Web Portal" {{on "click" (fn (mut this.portalOpen) true)}} />
     <D.Icon @icon="🔌" @name="Wirez" {{on "click" (fn (mut this.wirezOpen) true)}} />
     <D.Icon @icon="🪞" @name="RELEVƎ⅃ƎЯ" {{on "click" (fn (mut this.relevelerOpen) true)}} />
     <D.Icon @icon="💀" @name="Planks of Death" {{on "click" (fn (mut this.deathOpen) true)}}/>
     <D.Icon @icon="🚢" @name="We Must Go Down With The Ship" {{on "click" (fn (mut this.shipOpen) true)}}/>
-
 
     {{#if this.aboutOpen}}
         <AppWindow 
@@ -55,6 +55,26 @@
             </div>
         </AppWindow>
     {{/if}}
+
+    {{#if this.portalOpen}}
+        <AppWindow 
+            @title="🌐 Web Portal"
+            @onClose={{fn (mut this.portalOpen) false}}
+        >
+            <div class="p-2 text-white font-mono">
+                {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+                    <p class={{pStyle}}>Check out these cool pages! Some belong to my friends, others I just think are neat. Want to be part of my portal? Get it touch!</p>
+                    <ul class="{{pStyle}} pl-2">
+                        <li><ExternalLink @href="https://modusinteractivegames.com/">Modus Interactive Games</ExternalLink></li>
+                        <li><ExternalLink @href="https://warrrkus.itch.io/">Warkus Computer Entertainment</ExternalLink></li>
+                        <li><ExternalLink @href="https://yorped.com/horrorgifs/index.html">The Horror GIF Necronomicon</ExternalLink></li>
+                        <li><ExternalLink @href="https://archive.org/details/software">Internet Archive: Software</ExternalLink></li>
+                    </ul>
+                {{/let}}
+            </div>
+        </AppWindow>
+    {{/if}}
+
 
     {{#if this.wirezOpen}}
         <AppWindow 

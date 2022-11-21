@@ -7,4 +7,5 @@ export default class ApplicationController extends Controller {
     @tracked aboutOpen = true;
     @tracked deathOpen = false;
     @tracked systemOpen = false;
+    @tracked portalOpen = false;
 }

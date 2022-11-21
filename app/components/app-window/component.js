@@ -17,6 +17,9 @@ export default class AppWindowComponent extends Component {
     @tracked
     dragElement = null;
 
+    get currentlyActive() {
+        return this.windowManager.currentlyDragging == this;
+    }
 
     get resizable() {
         if (!isEmpty(this.args.resizable)) {
@@ -28,7 +31,7 @@ export default class AppWindowComponent extends Component {
 
     @action
     mouseDown(e) {
-        // if (e.target != this.dragElement) return;
+        if (e.button !== 0) return;
         e.preventDefault();
         this.currentMousePosX = e.clientX;
         this.currentMousePosY = e.clientY;
@@ -58,6 +61,11 @@ export default class AppWindowComponent extends Component {
             this.dragElement.style.top = (this.dragElement.offsetTop - pos2) + "px";
             this.dragElement.style.left = (this.dragElement.offsetLeft - pos1) + "px";
         }
+    }
+
+    @action
+    makeActive(e) {
+        this.windowManager.currentlyDragging = this;
     }
 
     @action
