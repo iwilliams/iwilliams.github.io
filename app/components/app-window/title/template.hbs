@@ -5,6 +5,11 @@
     <div class="flex shadow-black text-shadow">
         <span>{{yield}}</span>
         <span class="flex-auto"></span>
-        <button class="shadow-black text-shadow" type="button" {{on "click" (optional @onClose)}}>❌</button>
+        <button 
+            class="shadow-black text-shadow" 
+            type="button"
+            title="Close window"
+            {{on "click" (optional @onClose)}}
+        >❌</button>
     </div>
 </div>

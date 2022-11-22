@@ -1,0 +1,18 @@
+<AppWindow 
+    @title="🪐 Web Ring"
+    @onClose={{fn (mut @app.isOpen) false}}
+>
+    <div class="p-2 text-white font-mono">
+        {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+            <p class={{pStyle}}>Check out these cool pages! Some belong to my friends, others I just think are neat. Want to be part of my web ring? Get it touch!</p>
+            <ul class="{{pStyle}} pl-2">
+                <li><ExternalLink @href="https://modusinteractivegames.com/">Modus Interactive Games</ExternalLink></li>
+                <li><ExternalLink @href="https://warrrkus.itch.io/">Warkus Computer Entertainment</ExternalLink></li>
+                <li><ExternalLink @href="https://yorped.com/horrorgifs/index.html">The Horror GIF Necronomicon</ExternalLink></li>
+                <li><ExternalLink @href="https://archive.org/details/software">Internet Archive: Software</ExternalLink></li>
+                <li><ExternalLink @href="https://hauntedps1.itch.io/">The Haunted PS1</ExternalLink></li>
+                <li><ExternalLink @href="https://developer.mozilla.org/en-US/docs/Web">MDN Web Docs</ExternalLink></li>
+            </ul>
+        {{/let}}
+    </div>
+</AppWindow>

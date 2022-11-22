@@ -1,0 +1,7 @@
+<AppWindow 
+    @title={{concat @app.icon " " @app.name}}
+    @resizable={{false}}
+    @onClose={{fn (mut @app.isOpen) false}}
+>
+    <iframe frameborder="0" src={{@app.embedUrl}} allowfullscreen="" width={{@app.width}} height={{@app.height}}><a href={{@app.url}}>Play {{@app.name}} on itch.io</a></iframe>
+</AppWindow>

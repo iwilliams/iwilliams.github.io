@@ -1,0 +1,27 @@
+ <AppWindow 
+    @title="🗣️ About Me"
+    @offsetX={{-40}}
+    @offsetY={{40}}
+    @initialHeight={{430}}
+    @onClose={{fn (mut @app.isOpen) false}}
+>
+    <div class="p-2 text-white font-mono">
+        {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+            <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
+            <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks and languages.</p>
+            <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
+                You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>
+                and <ExternalLink @href="https://store.steampowered.com/search/?developer=iwilliams">on Steam</ExternalLink>.
+                A few of my games that work in the browser can even be played here on this virtual dekstop 💻.
+            </p>
+            <p class={{pStyle}}>You can find me on various other websites below:</p>
+            <ul class="{{pStyle}} pl-2">
+                <li><ExternalLink @href="https://twitter.com/iwilliams_dev">Twitter 🐦</ExternalLink></li>
+                <li><ExternalLink @href="https://github.com/iwilliams">GitHub 🐙</ExternalLink></li>
+                <li><ExternalLink @href="https://cohost.org/iwilliams">Cohost 🥚</ExternalLink></li>
+                <li><ExternalLink @href="https://iwilliams.itch.io">Itch.io 🕹️</ExternalLink></li>
+            </ul>
+            <img class="float-right" src="/skeleton_toot.gif" alt="A skeleton blows on a trumpet"/>
+        {{/let}}
+    </div>
+</AppWindow>
