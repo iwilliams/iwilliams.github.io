@@ -8,5 +8,6 @@ export default class AppsSettingsComponent extends Component {
     @action
     setWallpaper(event) {
         this.settings.currentWallpaper = this.settings.wallpapers[event.target.value];
+        window.localStorage.setItem("wallpaper", this.settings.currentWallpaper.name);
     }
 }

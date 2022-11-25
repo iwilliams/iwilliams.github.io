@@ -13,9 +13,11 @@ const wallpapers = [
     { name: "Nuclease", className: "bg-nuclease" }
 ]
 
+const savedWallpaper = window.localStorage.getItem("wallpaper")
+
 export default class SettingsService extends Service {
     @tracked
-    currentWallpaper = wallpapers[1];
+    currentWallpaper = !savedWallpaper ? wallpapers[1] : wallpapers.find(wallpaper => wallpaper.name === savedWallpaper);
 
     @tracked
     wallpapers = wallpapers;
