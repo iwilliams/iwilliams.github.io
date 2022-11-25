@@ -41,8 +41,13 @@ export default class AppWindowComponent extends Component {
 
     @action
     mouseUp(e) {
-        e.preventDefault();
-        this.isDragging = false;
+        if (this.isDragging) {
+            e.preventDefault();
+            this.isDragging = false;
+
+            const { top, left } = this.dragElement.style;
+            window.sessionStorage.setItem(`${this.args.app.camelizedName}Position`, [top, left].join(','));
+        }
     }
 
     @action
@@ -77,12 +82,27 @@ export default class AppWindowComponent extends Component {
         this.windowManager.currentlyDragging = this;
 
         const windowBody = this.dragElement.querySelector('.app-window__body');
-        windowBody.style.width = `${windowBody.offsetWidth}px`;
 
-        if (this.args.initialHeight) {
-            windowBody.style.height = `${this.args.initialHeight}px`;
+        const savedSize = window.sessionStorage.getItem(`${this.args.app.camelizedName}Size`);
+        if (this.resizable && savedSize !== null) {
+            const [ width, height ] = savedSize.split(',');
+            windowBody.style.width = width;
+            windowBody.style.height = height;
         } else {
-            windowBody.style.height = `${windowBody.offsetHeight}px`;
+            windowBody.style.width = `${windowBody.offsetWidth}px`;
+
+            if (this.args.initialHeight) {
+                windowBody.style.height = `${this.args.initialHeight}px`;
+            } else {
+                windowBody.style.height = `${windowBody.offsetHeight}px`;
+            }
+        }
+
+        if (this.resizable) {
+            new ResizeObserver(() => {
+                const { width, height } = windowBody.style;
+                window.sessionStorage.setItem(`${this.args.app.camelizedName}Size`, [width, height].join(','));
+            }).observe(windowBody);
         }
 
         const width = this.dragElement.offsetWidth;
@@ -94,6 +114,22 @@ export default class AppWindowComponent extends Component {
             this.dragElement.style.top = "0";
             this.dragElement.style.left = "0";
             return;
+        }
+
+        const savedPosition = window.sessionStorage.getItem(`${this.args.app.camelizedName}Position`);
+        if (savedPosition !== null) {
+            let [top, left] = savedPosition.split(',');
+            if (top !== undefined && left !== undefined) {
+                top = top.substring(0, top.length - 2);
+                left = left.substring(0, left.length - 2);
+
+                left = Math.max(0, Math.min(left, windowWidth - width));
+                top = Math.max(0, Math.min(top, windowHeight - height));
+
+                this.dragElement.style.top = `${top}px`;
+                this.dragElement.style.left = `${left}px`;
+                return
+            }
         }
 
         if (this.args.offsetX) {

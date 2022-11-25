@@ -3,11 +3,11 @@
     @offsetX={{-40}}
     @offsetY={{40}}
     @initialHeight={{430}}
-    @onClose={{fn (mut @app.isOpen) false}}
+    @app={{@app}}
 >
     <div class="p-2 text-white font-mono">
         {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
-            <p class={{pStyle}}>Hello! My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
+            <p class={{pStyle}}>Hello 👋, My name is Ian Williams, but I usually just go by <i>iwilliams</i> on the internet.</p>
             <p class={{pStyle}}>I've been a web developer for over 10 years working on all parts of the application stack and in a ton of different frameworks and languages.</p>
             <p class={{pStyle}}>When I'm not doing webdev I'm usually working on indie games! 
                 You can find them on my <ExternalLink @href="https://iwilliams.itch.io/">itch.io profile</ExternalLink>

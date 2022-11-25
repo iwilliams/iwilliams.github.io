@@ -4,7 +4,7 @@
         <D.Icon 
             @icon={{app.icon}} 
             @name={{app.name}}
-            {{on "click" (fn (mut app.isOpen) true)}}
+            {{on "click" app.open}}
         />
     {{/each}}
     

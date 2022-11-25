@@ -11,7 +11,10 @@ module.exports = {
           '0%': { transform: 'translate3d(100%, 0, 0)' },
           '100%': { transform: 'translate3d(-100%, 0, 0)' },
         }
-      }, 
+      },
+      backgroundSize: {
+        'stretch': '100% 100%'
+      },
       animation: {
         marquee: 'marquee 30s linear infinite',
       }

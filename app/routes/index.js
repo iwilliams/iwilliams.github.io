@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 import { tracked } from '@glimmer/tracking';
+import { camelize } from '@ember/string';
+import { action } from '@ember/object';
 
 
 class App {
@@ -16,10 +18,28 @@ class App {
         return this.name.toLowerCase().replace(/ /g, '-');
     }
 
+    get camelizedName() {
+        return camelize(this.name);
+    }
+
     constructor(icon, name, isOpen = false) {
         this.icon = icon;
         this.name = name;
-        this.isOpen = isOpen;
+
+        let storedIsOpen = window.sessionStorage.getItem(`${this.camelizedName}IsOpen`);
+        this.isOpen = storedIsOpen === null ? isOpen : storedIsOpen === "true";
+    }
+
+    @action
+    open() {
+        this.isOpen = true;
+        window.sessionStorage.setItem(`${this.camelizedName}IsOpen`, true);
+    }
+
+    @action
+    close() {
+        this.isOpen = false;
+        window.sessionStorage.setItem(`${this.camelizedName}IsOpen`, false);
     }
 }
 
@@ -55,6 +75,7 @@ export default class IndexRoute extends Route {
         return [
             new App("🗣️", "About Me", true),
             new App("🖥️", "System Information"),
+            new App("📌", "MOTD", true),
             new App("🎛️", "Settings"),
             new App("🪐", "Web Ring"),
             new ItchApp("🔌", "Wirez", "https://iwilliams.itch.io/wirez", "https://itch.io/embed-upload/2270446?color=2e222f", 800, 480),

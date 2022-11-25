@@ -16,26 +16,26 @@
 
 .desktop.bg-cyber-lancer {
     background-image: url("/cyber_lancer.png");
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
     image-rendering: pixelated;
 }
 
 .desktop.bg-crystalline-plain {
     background-image: url("/crystalline_plain.png");
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
 }
 
 .desktop.bg-digital-transcendence {
     background-image: url("/digital_transcendence.png");
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
 }
 
 .desktop.bg-nuclease {
     background-image: url("/nuclease.jpg");
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
 }
 

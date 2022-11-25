@@ -1,6 +1,6 @@
 <AppWindow 
     @title="🖥️ System Information"
-    @onClose={{fn (mut @app.isOpen) false}}
+    @app={{@app}}
 >
     <div class="p-2 text-white font-mono">
         {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}

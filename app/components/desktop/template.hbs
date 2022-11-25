@@ -1,5 +1,5 @@
 <div class="flex flex-col w-full h-full">
-    <div class="desktop {{this.settings.currentWallpaper.className}} bg-slate-500 font-mono flex flex-col flex-grow content-start items-center overflow-auto flex-wrap p-4 relative">
+    <div class="desktop {{this.settings.currentWallpaper.className}} {{this.settings.currentWallpaperSize.className}} bg-slate-500 font-mono flex flex-col flex-grow content-start items-center overflow-auto flex-wrap p-4 relative">
         {{yield (hash
             Icon=(component "desktop/icon")
         )}}

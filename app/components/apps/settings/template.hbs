@@ -1,6 +1,6 @@
  <AppWindow 
     @title={{concat @app.icon " " @app.name}}
-    @onClose={{fn (mut @app.isOpen) false}}
+    @app={{@app}}
 >
     <div class="p-2 text-white font-mono">
         {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800 flex justify-between space-x-4" as |pStyle|}}
@@ -12,6 +12,18 @@
                 >
                     {{#each this.settings.wallpapers as |wallpaper index|}}
                         <option value={{index}} selected={{eq this.settings.currentWallpaper wallpaper}}>{{wallpaper.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class={{pStyle}}>
+                <span>Wallpaper size:</span>
+                <select 
+                    class="bg-black border-2 border-white outline-none"
+                    {{on "change" this.setWallpaperSize}}
+                >
+                    {{#each this.settings.wallpaperSizes as |wallpaperSize index|}}
+                        <option value={{index}} selected={{eq this.settings.currentWallpaperSize wallpaperSize}}>{{wallpaperSize.name}}</option>
                     {{/each}}
                 </select>
             </div>

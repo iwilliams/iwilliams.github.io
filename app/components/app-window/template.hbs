@@ -5,16 +5,19 @@
     {{will-destroy this.willDestroy}}
 >
     <AppWindow::Title
-        @onClose={{@onClose}}
+        @onClose={{@app.close}}
         @isDragging={{this.isDragging}}
         {{on "mousedown" this.mouseDown}}
     >
         {{@title}}
     </AppWindow::Title>
-    <div class="app-window__body relative flex-auto {{if this.resizable "overflow-auto overflow-y-scroll sm:resize sm:min-w-fit"}}">
+    <div 
+        class="app-window__body relative flex-auto {{if this.resizable "overflow-auto overflow-y-scroll sm:resize sm:min-w-fit"}}"
+        {{on "mousedown" this.makeActive}}
+    >
         {{yield}}
-        {{#if (or (not this.currentlyActive) this.isDragging)}}
-            <div class="absolute w-full h-full z-10 top-0" {{on "click" this.makeActive}}></div>
+        {{#if this.isDragging}}
+            <div class="absolute w-full h-full z-10 top-0"></div>
         {{/if}}
     </div>
 </div>

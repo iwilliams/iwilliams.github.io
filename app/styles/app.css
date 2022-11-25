@@ -23,3 +23,12 @@ ul li:before {
     content: " \27A3";
     margin-right: 0.5em;
 }
+
+code {
+    background-color: #343434;
+    padding: 2px;
+    text-shadow: none;
+    border-radius: 5px;
+    color: rgb(220 38 38);
+    border: 1px solid #626262;
+}
