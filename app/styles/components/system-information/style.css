@@ -1,0 +1,14 @@
+
+.system-information__under-construction span {
+    /* animation-name: marquee;
+    animation-duration: 30s;
+    animation-iteration-count: infinite; */
+}
+
+.system-information__under-construction:before, .system-information__under-construction:after {
+    background-image: url('/underbar.gif');
+    display: inline-block;
+    width: 100%;
+    content: '';
+    height: 11px;
+}

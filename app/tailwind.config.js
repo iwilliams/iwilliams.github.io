@@ -4,4 +4,17 @@ module.exports = {
   content: [
     './app/**/*.{ts,js,hbs,css}'
   ],
+  theme: {
+    extend: {
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translate3d(100%, 0, 0)' },
+          '100%': { transform: 'translate3d(-100%, 0, 0)' },
+        }
+      }, 
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+      }
+    }
+  }
 }

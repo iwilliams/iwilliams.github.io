@@ -76,9 +76,13 @@ export default class AppWindowComponent extends Component {
 
         this.windowManager.currentlyDragging = this;
 
+        const windowBody = this.dragElement.querySelector('.app-window__body');
+        windowBody.style.width = `${windowBody.offsetWidth}px`;
 
         if (this.args.initialHeight) {
-            this.dragElement.querySelector('.app-window__body').style.height = `${this.args.initialHeight}px`;
+            windowBody.style.height = `${this.args.initialHeight}px`;
+        } else {
+            windowBody.style.height = `${windowBody.offsetHeight}px`;
         }
 
         const width = this.dragElement.offsetWidth;

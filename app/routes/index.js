@@ -55,6 +55,7 @@ export default class IndexRoute extends Route {
         return [
             new App("🗣️", "About Me", true),
             new App("🖥️", "System Information"),
+            new App("🎛️", "Settings"),
             new App("🪐", "Web Ring"),
             new ItchApp("🔌", "Wirez", "https://iwilliams.itch.io/wirez", "https://itch.io/embed-upload/2270446?color=2e222f", 800, 480),
             new ItchApp("🪞", "RELEVƎ⅃ƎЯ", "https://iwilliams.itch.io/releveler", "https://itch.io/embed-upload/2143016?color=000000", 640, 480),

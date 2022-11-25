@@ -9,6 +9,7 @@
 /node_modules/
 
 # misc
+/scratch.html
 /.yarn
 /.env*
 /.pnp*

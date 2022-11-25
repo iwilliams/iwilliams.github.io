@@ -4,9 +4,12 @@
 >
     <div class="p-2 text-white font-mono">
         {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
-            <p class="{{pStyle}} font-bold">***CURRENTLY UNDER CONSTRUCTION***</p>
+            <div class="system-information__under-construction mb-4 text-lg text-shadow shadow-slate-800 font-bold text-center overflow-hidden max-w-full">
+                <span class="inline-block w-full animate-marquee whitespace-nowrap">🚧 CURRENTLY UNDER CONSTRUCTION 🚧</span>
+            </div>
             <p class={{pStyle}}>This web applicaiton is made using <ExternalLink @href="https://emberjs.com">Ember.js 🐹</ExternalLink>. It's hosted using GitHub pages, and you can find the source code <ExternalLink @href="https://github.com/iwilliams/iwilliams.github.io">over here</ExternalLink>.</p>
             <p class={{pStyle}}>I might work on making this into something that can be more easily extended and customized. If you end up using the code for something cool let me know!</p>
+            <p class={{pStyle}}>Bryce wallpapers provided by <ExternalLink @href="https://modusinteractivegames.com/">Modus Interactive</ExternalLink> (<ExternalLink @href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</ExternalLink>)</p>
             <p class={{pStyle}}>App version: {{app-version shaOnly=true}}</p>
         {{/let}}
     </div>
