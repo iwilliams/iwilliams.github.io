@@ -81,16 +81,26 @@ export default class AppWindowComponent extends Component {
 
         this.windowManager.currentlyDragging = this;
 
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
         const windowBody = this.dragElement.querySelector('.app-window__body');
 
         const savedSize = window.sessionStorage.getItem(`${this.args.app.camelizedName}Size`);
         if (this.resizable && savedSize !== null) {
-            const [ width, height ] = savedSize.split(',');
-            windowBody.style.width = width;
-            windowBody.style.height = height;
+            let [ width, height ] = savedSize.split(',');
+            width = width.substring(0, width.length - 2);
+            height = height.substring(0, height.length - 2);
+
+            width = Math.min(width, windowWidth);
+
+            windowBody.style.width = `${width}px`;
+            windowBody.style.height = `${height}px`;
         } else {
             if (this.args.initialWidth) {
-                windowBody.style.width = `${this.args.initialWidth}px`;
+                let width = this.args.initialWidth;
+                width = Math.min(width, windowWidth);
+                windowBody.style.width = `${width}px`;
             } else {
                 windowBody.style.width = `${windowBody.offsetWidth}px`;
             }
@@ -111,8 +121,7 @@ export default class AppWindowComponent extends Component {
 
         const width = this.dragElement.offsetWidth;
         const height = this.dragElement.offsetHeight;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+
 
         if (windowWidth <= 640) {
             this.dragElement.style.top = "0";

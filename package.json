@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "ember build --environment=production --output-path=\"./docs/\" && git checkout main docs/CNAME",
+    "deploy": "git add --all && git commit -m \"deploy\" && git push",
     "lint": "npm-run-all --print-name --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --print-name --aggregate-output --continue-on-error --parallel \"lint:*:fix\"",
     "lint:hbs": "ember-template-lint .",

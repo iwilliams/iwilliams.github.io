@@ -1,23 +1,25 @@
-<div 
-    class="app-window static sm:fixed border-2 border-gray-400 border-outset shadow-2xl max-w-full flex sm:block flex-col h-full sm:h-[auto] pointer-events-auto
-        {{if this.currentlyActive "z-10"}}"
-    {{did-insert this.didInsert}}
-    {{will-destroy this.willDestroy}}
->
-    <AppWindow::Title
-        @onClose={{@app.close}}
-        @isDragging={{this.isDragging}}
-        {{on "mousedown" this.mouseDown}}
-    >
-        {{@title}}
-    </AppWindow::Title>
+<div class="absolute top-0 right-0 left-0 bottom-0">
     <div 
-        class="app-window__body relative flex-auto {{if this.resizable "overflow-auto overflow-y-scroll sm:resize sm:min-w-fit"}}"
-        {{on "mousedown" this.makeActive}}
+        class="app-window static sm:fixed border-2 border-gray-400 border-outset shadow-2xl max-w-full w-full sm:w-auto flex sm:block flex-col h-full sm:h-[auto] pointer-events-auto
+            {{if this.currentlyActive "z-10"}}"
+        {{did-insert this.didInsert}}
+        {{will-destroy this.willDestroy}}
     >
-        {{yield}}
-        {{#if this.isDragging}}
-            <div class="absolute w-full h-full z-10 top-0"></div>
-        {{/if}}
+        <AppWindow::Title
+            @onClose={{@app.close}}
+            @isDragging={{this.isDragging}}
+            {{on "mousedown" this.mouseDown}}
+        >
+            {{@title}}
+        </AppWindow::Title>
+        <div 
+            class="app-window__body relative flex-auto min-w-full sm:min-w-auto max-w-full sm:max-w-auto {{if this.resizable "overflow-auto sm:overflow-y-scroll sm:resize sm:min-w-fit" "overflow-hidden"}}"
+            {{on "mousedown" this.makeActive}}
+        >
+            {{yield}}
+            {{#if this.isDragging}}
+                <div class="absolute w-full h-full z-10 top-0"></div>
+            {{/if}}
+        </div>
     </div>
 </div>
