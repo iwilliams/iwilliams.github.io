@@ -27,6 +27,11 @@
                     {{/each}}
                 </select>
             </div>
+
+            <div class={{pStyle}}>
+                <button {{on "click" this.clearLocalStorage}} class="border-2 border-white px-2 align-self-end">Clear saved settings</button>
+                <button {{on "click" this.clearSessionStorage}} class="border-2 border-white px-2">Clear saved window data</button>
+            </div>
         {{/let}}
     </div>
 </AppWindow>

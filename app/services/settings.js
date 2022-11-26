@@ -15,7 +15,7 @@ const wallpapers = [
     { name: "Marble - Black", className: "bg-marble-black", defaultSize: wallpaperSizes[0] },
     { name: "Clouds", className: "bg-clouds", defaultSize: wallpaperSizes[0] },
     { name: "Stars", className: "bg-stars", defaultSize: wallpaperSizes[0] },
-    { name: "Cyber Lancer", className: "bg-cyber-lancer", defaultSize: wallpaperSizes[1] },
+    { name: "Cyber Lancer", className: "bg-cyber-lancer", defaultSize: wallpaperSizes[2] },
     { name: "Crystalline Plain", className: "bg-crystalline-plain", defaultSize: wallpaperSizes[1] },
     { name: "Digital Transcendence", className: "bg-digital-transcendence", defaultSize: wallpaperSizes[1] },
     { name: "Nuclease", className: "bg-nuclease", defaultSize: wallpaperSizes[1] }

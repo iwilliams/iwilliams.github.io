@@ -1,15 +1,27 @@
  <AppWindow 
     @title={{concat @app.icon " Message of the Day"}}
-    @offsetX={{-40}}
-    @offsetY={{540}}
+    @gridX={{3}}
+    @gridY={{3}}
     @app={{@app}}
 >
     <div class="p-2 text-white font-mono">
         {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
-            <h1 class="{{pStyle}} font-bold">November 25, 2022</h1>
-            <p class={{pStyle}}>Added the ability to store settings using the browser's <code>sesionStorage</code> and <code>localStorage</code>. 
-                You can now customize your wallpaper in the settings app and your choice will persist between visits!
-                If you open and move around applications, their position, size, and open status will be saved for the duration of your session.</p>
+            <article class="max-w-prose">
+                <h1 class="{{pStyle}} font-bold">November 26, 2022</h1>
+                <p class="{{pStyle}} indent-4">
+                    Trying out a new algorithm for default window positions, it might look a little weird on 1080p+ window sizes.
+                    Added the ability to clear <code>sesionStorage</code> and <code>localStorage</code> in the settings app.
+                </p>
+            </article>
+            <hr class="mb-4">
+            <article class="max-w-prose">
+                <h1 class="{{pStyle}} font-bold">November 25, 2022</h1>
+                <p class="{{pStyle}} indent-4">
+                    Added the ability to store settings using the browser's <code>sesionStorage</code> and <code>localStorage</code>. 
+                    You can now customize your wallpaper in the settings app and your choice will persist between visits!
+                    If you open and move around applications, their position, size, and open status will be saved for the duration of your session.
+                </p>
+            </article>
         {{/let}}
     </div>
 </AppWindow>

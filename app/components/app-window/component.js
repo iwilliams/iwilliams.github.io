@@ -81,32 +81,37 @@ export default class AppWindowComponent extends Component {
 
         this.windowManager.currentlyDragging = this;
 
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+        const windowWidth = this.windowManager.desktopElement.offsetWidth;
+        const windowHeight = this.windowManager.desktopElement.offsetHeight;
 
+        const windowTitle = this.dragElement.querySelector('.app-window__title');
         const windowBody = this.dragElement.querySelector('.app-window__body');
 
+        const savedPosition = window.sessionStorage.getItem(`${this.args.app.camelizedName}Position`);
         const savedSize = window.sessionStorage.getItem(`${this.args.app.camelizedName}Size`);
+
+        let gridInfo = 
+            (this.args.gridX || this.args.gridY) ? this.windowManager.getWindowForGrid(3, 3, 10, this.args.gridX || 1, this.args.gridY || 1, this.args.gridWidth || 1, this.args.gridHeight || 1) : null;
+
         if (this.resizable && savedSize !== null) {
-            let [ width, height ] = savedSize.split(',');
+            let [width, height] = savedSize.split(',');
             width = width.substring(0, width.length - 2);
             height = height.substring(0, height.length - 2);
 
             width = Math.min(width, windowWidth);
+            height = Math.min(height, windowHeight - windowTitle.offsetHeight);
 
             windowBody.style.width = `${width}px`;
             windowBody.style.height = `${height}px`;
         } else {
-            if (this.args.initialWidth) {
-                let width = this.args.initialWidth;
-                width = Math.min(width, windowWidth);
-                windowBody.style.width = `${width}px`;
+            if (gridInfo !== null) {
+                windowBody.style.width = `${gridInfo.width}px`;
             } else {
                 windowBody.style.width = `${windowBody.offsetWidth}px`;
             }
 
-            if (this.args.initialHeight) {
-                windowBody.style.height = `${this.args.initialHeight}px`;
+            if (gridInfo !== null) {
+                windowBody.style.height = `${gridInfo.height - windowTitle.offsetHeight}px`;
             } else {
                 windowBody.style.height = `${windowBody.offsetHeight}px`;
             }
@@ -129,7 +134,6 @@ export default class AppWindowComponent extends Component {
             return;
         }
 
-        const savedPosition = window.sessionStorage.getItem(`${this.args.app.camelizedName}Position`);
         if (savedPosition !== null) {
             let [top, left] = savedPosition.split(',');
             if (top !== undefined && left !== undefined) {
@@ -141,28 +145,19 @@ export default class AppWindowComponent extends Component {
 
                 this.dragElement.style.top = `${top}px`;
                 this.dragElement.style.left = `${left}px`;
-                return
             }
-        }
-
-        if (this.args.offsetX) {
-            let offsetX = this.args.offsetX;
-            if (offsetX < 0) {
-                offsetX = window.innerWidth - this.dragElement.offsetWidth + offsetX;
-            }
-            this.dragElement.style.left = `${offsetX}px`;
         } else {
-            this.dragElement.style.left = `${(windowWidth - width)*.5}px`;
-        }
-
-        if (this.args.offsetY) {
-            let offsetY = this.args.offsetY;
-            if (offsetY < 0) {
-                offsetY = window.innerHeight - this.dragElement.offsetHeight + offsetY;
+            if (gridInfo !== null) {
+                this.dragElement.style.left = `${gridInfo.x}px`;
+            } else {
+                this.dragElement.style.left = `${(windowWidth - width) * .5}px`;
             }
-            this.dragElement.style.top = `${offsetY}px`;
-        } else {
-            this.dragElement.style.top = `${(windowHeight - height)*.5}px`;
+
+            if (gridInfo !== null) {
+                this.dragElement.style.top = `${gridInfo.y}px`;
+            } else {
+                this.dragElement.style.top = `${(windowHeight - height) * .5}px`;
+            }
         }
 
     }

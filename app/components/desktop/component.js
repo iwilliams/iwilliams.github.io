@@ -3,4 +3,5 @@ import { service } from '@ember/service';
 
 export default class DesktopComponent extends Component {
     @service settings;
+    @service windowManager;
 }

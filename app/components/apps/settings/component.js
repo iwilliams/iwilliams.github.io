@@ -16,4 +16,14 @@ export default class AppsSettingsComponent extends Component {
         const wallpaperSize = this.settings.wallpaperSizes[event.target.value];
         this.settings.setWallpaperSize(wallpaperSize);
     }
+
+    @action
+    clearLocalStorage() {
+        window.localStorage.clear();
+    }
+
+    @action
+    clearSessionStorage() {
+        window.sessionStorage.clear();
+    }
 }
