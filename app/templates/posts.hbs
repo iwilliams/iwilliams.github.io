@@ -1,0 +1,16 @@
+{{page-title "Posts"}}
+
+ <AppWindow 
+    @title={{this.windowTitle}}
+    @initialWidth={{640}}
+    @initialHeight={{540}}
+    @app={{@model}}
+>
+    <div class="p-2 text-white font-mono">
+        {{#if this.showPostsLink}}
+            <InternalLink @route="posts.index">&lt;&lt; Posts</InternalLink>
+        {{/if}}
+        {{outlet}}
+    </div>
+</AppWindow>
+

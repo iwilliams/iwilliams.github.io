@@ -89,7 +89,11 @@ export default class AppWindowComponent extends Component {
             windowBody.style.width = width;
             windowBody.style.height = height;
         } else {
-            windowBody.style.width = `${windowBody.offsetWidth}px`;
+            if (this.args.initialWidth) {
+                windowBody.style.width = `${this.args.initialWidth}px`;
+            } else {
+                windowBody.style.width = `${windowBody.offsetWidth}px`;
+            }
 
             if (this.args.initialHeight) {
                 windowBody.style.height = `${this.args.initialHeight}px`;

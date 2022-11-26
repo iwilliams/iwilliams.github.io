@@ -18,6 +18,9 @@ html, body {
     overflow: hidden;
 }
 
+ul li {
+    display: flex;
+}
 
 ul li:before {
     content: " \27A3";

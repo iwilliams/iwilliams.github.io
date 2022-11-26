@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import { tracked } from '@glimmer/tracking';
 import { camelize } from '@ember/string';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 
 
 class App {
@@ -70,12 +71,34 @@ class ItchApp extends App {
     }
 }
 
-export default class IndexRoute extends Route {
+class PostsApp extends App {
+    router = null;
+
+    constructor(router) {
+        super("📖", "Posts");
+        this.router = router;
+    }
+
+    @action
+    open() {
+        this.router.transitionTo('posts');
+    }
+
+    @action
+    close() {
+        this.router.transitionTo('application');
+    }
+}
+
+export default class ApplicationRoute extends Route {
+    @service router;
+
     model() {
         return [
             new App("🗣️", "About Me", true),
             new App("🖥️", "System Information"),
             new App("📌", "MOTD", true),
+            new PostsApp(this.router),
             new App("🎛️", "Settings"),
             new App("🪐", "Web Ring"),
             new ItchApp("🔌", "Wirez", "https://iwilliams.itch.io/wirez", "https://itch.io/embed-upload/2270446?color=2e222f", 800, 480),

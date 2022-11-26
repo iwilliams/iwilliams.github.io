@@ -1,3 +1,22 @@
 {{page-title "iwilliams"}}
 
-{{outlet}}
+
+<Desktop as |D|>
+    {{#each this.model as |app|}}
+        <D.Icon 
+            @icon={{app.icon}} 
+            @name={{app.name}}
+            {{on "click" app.open}}
+        />
+    {{/each}}
+    
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+        {{#each this.model as |app|}}
+            {{#if app.isOpen}}
+                {{component (concat "apps/" app.componentName) app=app}}
+            {{/if}}
+        {{/each}}
+
+        {{outlet}}
+    </div>
+</Desktop>
