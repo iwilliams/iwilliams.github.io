@@ -1359,7 +1359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.18.10, @babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.19.0, @babel/types@npm:^7.20.0, @babel/types@npm:^7.20.2, @babel/types@npm:^7.4.4, @babel/types@npm:^7.7.0, @babel/types@npm:^7.7.2, @babel/types@npm:^7.8.3":
+"@babel/types@npm:^7.12.13, @babel/types@npm:^7.18.10, @babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.19.0, @babel/types@npm:^7.20.0, @babel/types@npm:^7.20.2, @babel/types@npm:^7.4.4, @babel/types@npm:^7.7.0, @babel/types@npm:^7.7.2, @babel/types@npm:^7.8.3":
   version: 7.20.2
   resolution: "@babel/types@npm:7.20.2"
   dependencies:
@@ -5661,6 +5661,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ember-concurrency@npm:^2.3.7":
+  version: 2.3.7
+  resolution: "ember-concurrency@npm:2.3.7"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.12.13
+    "@babel/types": ^7.12.13
+    "@glimmer/tracking": ^1.0.4
+    ember-cli-babel: ^7.26.11
+    ember-cli-babel-plugin-helpers: ^1.1.1
+    ember-cli-htmlbars: ^5.7.1
+    ember-compatibility-helpers: ^1.2.0
+    ember-destroyable-polyfill: ^2.0.2
+  checksum: 29fabb073e1f651200f3d6f29266f7316fba41ccae00267e60249ad0e0f7b6abd04e733cc698eb849761bfefd4d43cc42b8dbfaba84cf6ac5f242d9126d90d86
+  languageName: node
+  linkType: hard
+
 "ember-data@npm:~4.7.3":
   version: 4.7.3
   resolution: "ember-data@npm:4.7.3"
@@ -5685,7 +5701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-destroyable-polyfill@npm:^2.0.3":
+"ember-destroyable-polyfill@npm:^2.0.2, ember-destroyable-polyfill@npm:^2.0.3":
   version: 2.0.3
   resolution: "ember-destroyable-polyfill@npm:2.0.3"
   dependencies:
@@ -8636,6 +8652,7 @@ __metadata:
     ember-cli-sri: ^2.1.1
     ember-cli-terser: ^4.0.2
     ember-composable-helpers: ^5.0.0
+    ember-concurrency: ^2.3.7
     ember-data: ~4.7.3
     ember-fetch: ^8.1.2
     ember-load-initializers: ^2.1.2
@@ -8653,6 +8670,7 @@ __metadata:
     eslint-plugin-qunit: ^7.3.1
     loader.js: ^4.7.0
     luxon: ^3.1.0
+    marked: ^4.2.3
     npm-run-all: ^4.1.5
     postcss-import: ^15.0.0
     prettier: ^2.7.1
@@ -9474,6 +9492,15 @@ __metadata:
   bin:
     markdown-it: bin/markdown-it.js
   checksum: ad171466933d6ce33fcdddf32f641fc7ff238820a11397f07d45ab293e3fd6d83de14eaa59bfdc67dc4a715e73aa08bae9b2a38e44b119d7340d8ae691ca4b2d
+  languageName: node
+  linkType: hard
+
+"marked@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "marked@npm:4.2.3"
+  bin:
+    marked: bin/marked.js
+  checksum: 21b9f6cc4e7695b5e1f251b7b6c98fdc29c25f7ee6c8f4d5c51654856ea36d6222e9a5a227a9b89ccba717dcf7a722022f099aa0dc7caad8e041c996906c23d0
   languageName: node
   linkType: hard
 

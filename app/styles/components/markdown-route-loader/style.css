@@ -1,0 +1,11 @@
+.markdown-route-loader {
+    @apply max-w-prose mt-4;
+}
+
+.markdown-route-loader h1:first-child {
+    @apply font-bold text-xl;
+}
+
+.markdown-route-loader h1:first-child + h2 {
+    @apply mb-4 block border-b;
+}
