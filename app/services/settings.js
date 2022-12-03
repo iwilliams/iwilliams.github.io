@@ -18,7 +18,9 @@ const wallpapers = [
     { name: "Cyber Lancer", className: "bg-cyber-lancer", defaultSize: wallpaperSizes[2] },
     { name: "Crystalline Plain", className: "bg-crystalline-plain", defaultSize: wallpaperSizes[1] },
     { name: "Digital Transcendence", className: "bg-digital-transcendence", defaultSize: wallpaperSizes[1] },
-    { name: "Nuclease", className: "bg-nuclease", defaultSize: wallpaperSizes[1] }
+    { name: "Nuclease", className: "bg-nuclease", defaultSize: wallpaperSizes[1] },
+    { name: "Snow 1", className: "bg-snow-1", defaultSize: wallpaperSizes[0] },
+    { name: "Snow 2", className: "bg-snow-2", defaultSize: wallpaperSizes[0] }
 ];
 
 const savedWallpaper = window.localStorage.getItem("wallpaper");
@@ -27,7 +29,7 @@ const savedWallpaperSize = window.localStorage.getItem("wallpaperSize");
 
 export default class SettingsService extends Service {
     @tracked
-    currentWallpaper = !savedWallpaper ? wallpapers[1] : wallpapers.find(wallpaper => wallpaper.name === savedWallpaper);
+    currentWallpaper = !savedWallpaper ? wallpapers[9] : wallpapers.find(wallpaper => wallpaper.name === savedWallpaper);
 
     @tracked
     wallpapers = wallpapers;

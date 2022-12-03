@@ -91,7 +91,7 @@ export default class AppWindowComponent extends Component {
         const savedSize = window.sessionStorage.getItem(`${this.args.app.camelizedName}Size`);
 
         let gridInfo = 
-            (this.args.gridX || this.args.gridY) ? this.windowManager.getWindowForGrid(3, 3, 10, this.args.gridX || 1, this.args.gridY || 1, this.args.gridWidth || 1, this.args.gridHeight || 1) : null;
+            (this.args.gridX || this.args.gridY || this.args.gridHeight || this.args.gridWidth) ? this.windowManager.getWindowForGrid(3, 3, 10, this.args.gridX || 1, this.args.gridY || 1, this.args.gridWidth || 1, this.args.gridHeight || 1) : null;
 
         if (this.resizable && savedSize !== null) {
             let [width, height] = savedSize.split(',');

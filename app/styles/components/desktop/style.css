@@ -39,6 +39,14 @@
     background-position: center;
 }
 
+.desktop.bg-snow-1 {
+    background-image: url("/snow_bg.gif");
+}
+
+.desktop.bg-snow-2 {
+    background-image: url("/snow.gif");
+}
+
 .desktop__icon {
     max-width: 75px;
 }
