@@ -101,6 +101,7 @@ export default class ApplicationRoute extends Route {
             new PostsApp(this.router),
             new App("🎛️", "Settings"),
             new App("🪐", "Web Ring"),
+            new App("🧙‍♂️", "Cohost MTG"),
             new ItchApp("🔌", "Wirez", "https://iwilliams.itch.io/wirez", "https://itch.io/embed-upload/2270446?color=2e222f", 800, 480),
             new ItchApp("🪞", "RELEVƎ⅃ƎЯ", "https://iwilliams.itch.io/releveler", "https://itch.io/embed-upload/2143016?color=000000", 640, 480),
             new ItchApp("🚢", "We Must Go Down With The Ship", "https://iwilliams.itch.io/we-must-go-down-with-the-ship", "https://itch.io/embed-upload/5538635?color=140c1c", 1280, 800),

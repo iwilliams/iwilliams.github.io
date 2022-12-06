@@ -17,7 +17,10 @@ const links = [
     { url: "https://archive.org/details/software", name: "Internet Archive: Software" },
     { url: "https://gifcities.org/", name: "GifCities" },
     { url: "https://developer.mozilla.org/en-US/docs/Web", name: "MDN Web Docs" },
-    { url: "https://www.macintoshrepository.org/",name: "Macintosh Repository" }
+    { url: "https://www.macintoshrepository.org/",name: "Macintosh Repository" },
+    { url: "https://www.retrorgb.com/", name: "Retro RGB" },
+    { url: "https://artvee.com/", name: "Artvee" },
+    { url: "https://aarre.fun/", name: "Aarre" }
 ]
 
 export default class AppsWebRingComponent extends Component {

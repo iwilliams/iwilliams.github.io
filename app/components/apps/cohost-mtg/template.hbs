@@ -1,0 +1,107 @@
+ <AppWindow 
+    @title={{concat @app.icon " " @app.name}}
+    @app={{@app}}
+>
+    <div class="p-2 text-white font-mono">
+        {{#let "mb-4 text-lg max-w-prose text-shadow shadow-slate-800" as |pStyle|}}
+            <p class={{pStyle}}>
+                The form below will generate html to embed a MTG decklist in your cohost post. Only tested with lists copied from MTG Goldfish.
+                To include a card preview in the deck tech use the syntax <code>[[Card Name]]</code>.
+            </p>
+            <details class={{pStyle}}>
+                <summary>Known bugs</summary>
+                <ul class="ml-4">
+                    <li>Really only supports commander right now. No support for sideboards yet.</li>
+                    <li>You must enter the exact English card name, case sensitive.</li>
+                    <li>Phyrexian and hybrid mana is not yet supported.</li>
+                </ul>
+            </details>
+            <fieldset class="border rounded-md p-2 mb-2 flex flex-col max-w-prose">
+                <legend class="p-1">Enter deck details</legend>
+                <label>Commander</label>
+                <input 
+                    class="w-full mb-4 text-black p-2 max-w-prose" 
+                    value={{this.commander}}
+                    {{on "input" this.setCommander}}
+                />
+                <label>Partner</label>
+                <input 
+                    class="w-full mb-4 text-black p-2 max-w-prose" 
+                    value={{this.partner}}
+                    {{on "input" this.setPartner}}
+                />
+                <label>Companion</label>
+                <input 
+                    class="w-full mb-4 text-black p-2 max-w-prose" 
+                    value={{this.companion}}
+                    {{on "input" this.setCompanion}}
+                />
+                <label>Maindeck</label>
+                <textarea 
+                    class="max-w-prose text-black p-2 w-full mb-4" 
+                    rows="10"
+                    value={{this.cardList}}
+                    {{on "input" this.setCardList}}
+                />
+                {{!-- <label>Sideboard</label>
+                <textarea 
+                    class="max-w-prose text-black p-2 w-full mb-4" 
+                    rows="10"
+                    value={{this.sideboardList}}
+                    {{on "input" this.setSideboardList}}
+                /> --}}
+                <label>Deck tech</label>
+                <textarea 
+                    class="max-w-prose text-black p-2 w-full mb-4" 
+                    rows="10"
+                    value={{this.deckTech}}
+                    {{on "input" this.setDeckTech}}
+                />
+                <button {{on "click" this.fetchCards}} class="border rounded self-end p-2">Create Post</button>
+            </fieldset>
+        {{/let}}
+
+        <fieldset class="border rounded-md p-2 mb-2 flex flex-col max-w-prose">
+            <legend class="p-1">Preview</legend>
+            <div class="bg-white p-2 max-w-prose text-black relative">
+                {{{this.deckTechHtml}}}
+                <details {{did-insert this.setDecklist}}>
+                    <summary>Decklist</summary>
+                    <div>
+                        {{#each this.sectionNames as |sectionName|}}
+                            {{#let (get this.cardSections sectionName) as |section|}}
+                                {{#if (gt section.count 0)}}
+                                    <span style="font-weight:bold;padding: 5px 0;display:inline-block;user-select:none;">{{sectionName}} ({{section.count}})</span>
+                                    {{#each section.cards as |card|}}
+                                        <details>
+                                            <Apps::CohostMtg::CardSummary @card={{card}}>
+                                                <Apps::CohostMtg::CardName @card={{card}}/>
+                                                <Apps::CohostMtg::ManaCost @card={{card}}/>
+                                            </Apps::CohostMtg::CardSummary>
+                                            <a target="_blank" rel="noopener noreferrer" href={{card.scryfall_uri}} style="width: 100%;display:flex;overflow: auto;scroll-snap-type: x mandatory;">
+                                                {{#if (or (eq card.layout "transform") (eq card.layout "modal_dfc"))}}
+                                                    {{#each card.card_faces as |card_face|}}
+                                                        <img loading="lazy" style="width:100%;min-width:100%;scroll-snap-align: start;margin:0;" src={{card_face.image_uris.normal}} alt={{card_face.name}} />
+                                                    {{/each}}
+                                                {{else}}
+                                                    <img loading="lazy" style="width:100%;min-width:100%;scroll-snap-align: start;margin:0;" src={{card.image_uris.normal}} alt={{card.name}} />
+                                                {{/if}}
+                                            </a>
+                                        </details>
+                                    {{/each}}
+                                {{/if}}
+                            {{/let}}
+                        {{/each}}
+                        <span style="font-weight:bold;padding: 5px 0;display:inline-block;user-select:none;">{{this.cardSections.total}} Cards Total</span>
+                    </div>
+                </details>
+            </div>
+        </fieldset>
+
+        <fieldset class="border rounded-md p-2 mb-2 flex flex-col max-w-prose">
+            <legend class="p-1">Code</legend>
+            <textarea class="max-w-prose text-black p-2 w-full mb-4" value={{this.decklistHtml}} {{did-insert this.setTextareaOutput}}/>
+            <button {{on "click" this.copyText}} class="border rounded self-end p-2">Copy code</button>
+        </fieldset>
+    </div>
+</AppWindow>

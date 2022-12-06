@@ -113,7 +113,9 @@ export default class AppWindowComponent extends Component {
             if (gridInfo !== null) {
                 windowBody.style.height = `${gridInfo.height - windowTitle.offsetHeight}px`;
             } else {
-                windowBody.style.height = `${windowBody.offsetHeight}px`;
+                let height = windowBody.offsetHeight;
+                height = Math.min(windowHeight - windowTitle.offsetHeight - 100, height);
+                windowBody.style.height = `${height}px`;
             }
         }
 
